@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-featureNumber = 66.000
+featureNumber = 0
 
 # csvReader = csv.reader(codecs.open('commaMerged2.csv', 'rU', 'utf-16'))
 
@@ -17,22 +17,37 @@ if(featureNumber == 0):
     featureNumber = len(arr)
 
 subArr = arr[0:featureNumber]
-ax1 = subArr[:,2:6].astype(np.int).mean(axis=1)
-ax2 = subArr[:,6:10].astype(np.int).mean(axis=1)
+A1 = subArr[:,2:6].astype(np.int).mean(axis=1)
+A2 = subArr[:,6:10].astype(np.int).mean(axis=1)
 
-print(np.corrcoef(ax1,ax2))
-
-
+# print(np.corrcoef(A1,A2))
 
 
+A = subArr[:,2:10].astype(np.float).mean(axis=1)
+B = subArr[:,10].astype(np.float)
 
-x = np.linspace(0, 1, featureNumber)
+# print(np.corrcoef(A,B))
 
-plt.plot(x, ax1, label='linear')  # Plot some data on the (implicit) axes.
-plt.plot(x, ax2, label='quadratic')  # etc.
+# print(np.std(A,axis=0))
 
-plt.xlabel('x label')
-plt.ylabel('y label')
-plt.title("Simple Plot")
-plt.legend()
-plt.show()
+
+r1 = np.mean(A)
+print("\nMean: ", r1)
+  
+r2 = np.std(A2)
+print("\nstd: ", r2)
+  
+r3 = np.var(A)
+print("\nvariance: ", r3)
+
+
+# x = np.linspace(0, 1, featureNumber)
+
+# plt.plot(x, A, label='linear')  # Plot some data on the (implicit) axes.
+# plt.plot(x, B, label='quadratic')  # etc.
+
+# plt.xlabel('x label')
+# plt.ylabel('y label')
+# plt.title("Simple Plot")
+# plt.legend()
+# plt.show()
